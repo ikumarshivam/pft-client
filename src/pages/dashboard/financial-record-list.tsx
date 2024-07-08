@@ -32,16 +32,14 @@ const EditableCell: React.FC<EditableCellProps> = ({
     >
       {isEditing ? (
         <input
-          value={value}
+          value={value ?? ""}
           onChange={(e) => setValue(e.target.value)}
           autoFocus
           onBlur={onBlur}
           style={{ width: "100%" }}
         />
-      ) : typeof value === "string" ? (
-        value
       ) : (
-        value.toString()
+        (value !== null && value !== undefined) ? value.toString() : ""
       )}
     </div>
   );
@@ -133,6 +131,7 @@ export const FinancialRecordList = () => {
       columns,
       data: records,
     });
+
   return (
     <div className="table-container">
       <table {...getTableProps()} className="table">

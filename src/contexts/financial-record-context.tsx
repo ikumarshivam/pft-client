@@ -1,6 +1,7 @@
 import { useUser } from "@clerk/clerk-react";
 import { createContext, useContext, useEffect, useState } from "react";
-const BASE_URL = import.meta.env.BASE_URL;
+ 
+
 export interface FinancialRecord {
   _id?: string;
   userId: string;
@@ -33,7 +34,7 @@ export const FinancialRecordsProvider = ({
   const fetchRecords = async () => {
     if (!user) return;
     const response = await fetch(
-      `${BASE_URL}/financial-records/getAllByUserID/${user.id}`
+      `https://mypft-server.onrender.com/financial-records/getAllByUserID/${user.id}`
     );
 
     if (response.ok) {
@@ -48,7 +49,7 @@ export const FinancialRecordsProvider = ({
   }, [user]);
 
   const addRecord = async (record: FinancialRecord) => {
-    const response = await fetch(`${BASE_URL}/financial-records`, {
+    const response = await fetch("https://mypft-server.onrender.com/financial-records", {
       method: "POST",
       body: JSON.stringify(record),
       headers: {
@@ -66,7 +67,7 @@ export const FinancialRecordsProvider = ({
 
   const updateRecord = async (id: string, newRecord: FinancialRecord) => {
     const response = await fetch(
-      `${BASE_URL}/financial-records/${id}`,
+      `https://mypft-server.onrender.com/financial-records/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(newRecord),
@@ -94,7 +95,7 @@ export const FinancialRecordsProvider = ({
 
   const deleteRecord = async (id: string) => {
     const response = await fetch(
-      `${BASE_URL}/financial-records/${id}`,
+      `https://mypft-server.onrender.com/financial-records/${id}`,
       {
         method: "DELETE",
       }
