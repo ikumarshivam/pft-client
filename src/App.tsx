@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Dashboard } from "./pages/dashboard";
-import { Auth } from "./pages/auth";
 import { FinancialRecordsProvider } from "./contexts/financial-record-context";
 import { SignedIn, SignedOut, UserButton, SignIn, SignUp } from "@clerk/clerk-react";
 import { useState } from "react";
